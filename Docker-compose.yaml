@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  web:
+    # image: python:3.9.1-alpine3.12
+    build:
+      context: .
+      dockerfile: ./compose/Dockerfile-flask
+    container_name: "web"
+    ports:
+      - "80:80"
+    volumes:
+      - ./flask:/flask/
