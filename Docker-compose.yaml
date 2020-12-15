@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+
+  nginx:
+    build:
+      context: ./nginx/
+      dockerfile: Dockerfile-nginx
+    image: mynginx:0.1
+    container_name: "nginx"
+    ports:
+      - "8000:8000"
+
+  web1:
+    build:
+      context: ./flask/
+      dockerfile: Dockerfile-flask
+    image: myflask:0.1
+    container_name: "web1"
+    # ports:
+    #   - "8001:8001"
+    volumes:
+      - ./flask:/flask/
+
+  web2:
+    build:
+      context: ./flask/
+      dockerfile: Dockerfile-flask
+    image: myflask:0.1
+    container_name: "web2"
+    # ports:
+    #   - "8001:8001"
+    volumes:
+      - ./flask:/flask/
