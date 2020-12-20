@@ -2,6 +2,15 @@ version: "3.9"
 
 services:
 
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: "jenkins"
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+
   nginx:
     build:
       context: ./nginx/
@@ -32,3 +41,6 @@ services:
     #   - "8001:8001"
     volumes:
       - ./flask:/flask/
+
+volumes:
+  jenkins_home:
